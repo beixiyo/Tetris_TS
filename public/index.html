@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0b213a;
+            color: #fff;
+        }
+
+        .root {
+            display: flex;
+            height: 600px;
+            width: 700px;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+
+        .game {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            background-color: #000;
+        }
+
+        .panel-container {
+            display: flex;
+            flex-direction: column;
+            width: 180px;
+            height: 100%;
+        }
+
+        .tip {
+            display: flex;
+            margin: auto;
+            width: 100%;
+            height: 180px;
+            flex-shrink: 0;
+            background-color: rgb(143, 170, 217);
+        }
+
+        .panel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: lightslategray;
+        }
+
+        .next {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .score {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .msg {
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-direction: column;
+            user-select: none;
+            background-color: lightslategray;
+        }
+
+        pre {
+            font-family: inherit;
+        }
+
+        .prompt {
+            position: fixed;
+            left: 50%;
+            top: 10px;
+            transform: translateX(-50%);
+            color: red;
+            font-size: 20px;
+            animation: prompt .17s 0s 3 cubic-bezier(0.41, -0.54, 0.34, 1.65);
+        }
+
+        @keyframes prompt {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            90% {
+                transform: translateX(50%);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .game-over {
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            inset: 0;
+            backdrop-filter: blur(5px);
+            animation: mask .6s;
+            cursor: pointer;
+        }
+
+        @keyframes mask {
+            from {
+                opacity: 0;
+                transform: translateY(-80%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 600px;
+            height: 400px;
+            font-size: 40px;
+            color: #fff;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="root">
+        <div class="game"></div>
+
+        <div class="panel-container">
+            <div class="tip">
+                <div class="next"></div>
+            </div>
+
+            <div class="panel">
+                <h1 class="score">
+                    </h2>
+            </div>
+
+            <div class="msg">
+                <pre>空格旋转</pre>
+                <pre>`P` 暂停</pre>
+                <pre>`Enter` 继续</pre>
+                <pre>双击 `↓` 到底</pre>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
